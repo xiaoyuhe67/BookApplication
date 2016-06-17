@@ -1,22 +1,48 @@
+import java.util.Scanner;
 
 public class BookApp {
 	
+	static Scanner sc=new Scanner(System.in);
+	
+	static BookDatabase database=new BookDatabase();
+	
+	
 	public static void main(String[] args)
 	{
-		   Book mybook1 = new Book();  //using constructor
-	       System.out.println("Author: "+mybook1.getauthor());
-	       System.out.println("Title: "+mybook1.gettitle());
-	       System.out.println("Description: "+mybook1.getdescription());
-
-	       //This object creation would call the parameterized
-	       Book mybook2 = new Book("The Lord of the Rings", "J. R. R. Tolkien", "epic high-fantasy novel ",15.99,true);
-	       System.out.println("Author: "+mybook2.getauthor());
-	       System.out.println("Title: "+mybook2.gettitle());
-	       System.out.println("Description: "+mybook2.getdescription()); 
+		database.createBookDatabase();
+					
+		System.out.println("Please enter the sku of the book you want to buy");
+		
+		String sku=sc.next();
+		
+        System.out.println("Please enter the num of the book");
+		
+		int num=sc.nextInt();
+		
+		double price=database.searchBooks(sku).getprice();
+		
+		boolean isInstock=database.searchBooks(sku).getisInstock();
+		
+		System.out.println("The price is "+pricing(price,isInstock,num));
+		System.out.println(database.searchBooks(sku).getDisplayText());
+		      
+	      
 	       
-	       //Using getdisplaymethod
-	       Book mybook3= new Book("The Hobbit","J. R. R. Tolkien","children's fantasy novel", 14.99, false);
-	       mybook3.getDisplayText();
 	}
+	
+	public static double pricing(double price, boolean isInstock, int num)
+	{
+		if(isInstock)
+		{
+			return price*num;
+		}
+		else
+		{
+			System.out.println("The book is not instock");
+		}
+		return 0;
+	}
+	
+	
 
 }

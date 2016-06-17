@@ -1,13 +1,17 @@
 
 public class Book {	
 	
+	private String sku;
 	private String title;
 	private String author;
 	private String description;
 	private double price;
 	private boolean isInstock;
 	
+	
+	
 	Book() {
+		sku="Java1008";
 	    title="Harry Potty";
 	    author="J. K. Rowling";
 	    description="magic";
@@ -15,8 +19,9 @@ public class Book {
 	    isInstock=true;
 	}
 	
-	Book(String strtitle, String strauthor, String strdescription,double douprice,boolean booisInstock){
+	Book(String strsku,String strtitle, String strauthor, String strdescription,double douprice,boolean booisInstock){
 		
+		sku=strsku;
 		title=strtitle;
 		author=strauthor;
 		description=strdescription;
@@ -26,6 +31,12 @@ public class Book {
 	}
 	
 	//Getter and setter methods
+	public String getsku() {
+	       return sku;
+	   }
+	   public void setsku(String strsku) {
+	       this.sku = strsku;
+	   }
 	   public String gettitle() {
 	       return title;
 	   }
@@ -57,17 +68,37 @@ public class Book {
 	       this.isInstock = booisInstock;
 	   }
 	   
-	   public void getDisplayText() 
+	   public String gettitlebySku(String strsku)
+	   {
+		   return title;
+	   }
+	   public String getauthorbySku(String strsku)
+	   {
+		   return author;
+	   }
+	   public String getdescriptionbySku(String strsku)
+	   {
+		   return description;
+	   }
+	   public double getpricebySkU(String strsku)
+	   {
+		   return price;
+	   }
+	   public boolean getisInstockbySku(String strsku)
+	   {
+		   return isInstock;
+	   }
+	   
+	   public String getDisplayText() 
 	   {
 		   String disauthor=author;
 		   String distitle=title;
 		   String disdescription=description;
 		   
-		   System.out.println("Author: "+disauthor);
-		   System.out.println("Title: "+distitle);
-		   System.out.println("Description: "+ disdescription);
+		   return "Author: "+disauthor+", Title: "+distitle+", Description: "+disdescription;
 	   }
-	
+	   
+	  
 	
 	
 
