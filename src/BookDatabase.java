@@ -102,18 +102,18 @@ public class BookDatabase {
 	
 	public Book searchBooks(String sku)
 	{
+		Book bookjj=null;
+		
 		for(int i=0; i<getCount();i++)
 		{
 			if(mybooks[i].getsku().equals(sku))
 			{
-				return mybooks[i];
-			}
-			else
-			{
-				System.out.println("There is no book with sku "+sku);
+				bookjj=mybooks[i];
 			}
 		}
-		return mybooks[0];
+		
+		
+		return bookjj;
 		
 	}
 	
